@@ -21,7 +21,7 @@ Use the following video, or use a similar one online:
 https://www.youtube.com/watch?v=B6j-FNfQTvM
 ```
 
-##Approach
+## Approach
 ### About Yolo
 For this system that will detect NASCAR stock cars and their numbers, YOLO will be utilized, a real time object detection nueral net. YOLO, or You Only Look Once, applies its neural net to the whole image (once), unlike other models which apply the net to the image at different scale. This allows stronger predications as it can use the context of the whole image to asses predictions.
 
@@ -47,7 +47,7 @@ Gathering images of NASCAR stock cars are as easy as googling images and downloa
 
 The preffered tool here would be the Python library Google Images Download. The library also has a command line interface, shifting time from scripting to fine tuning search parameters.
 
-####Crafting the best serach query
+#### Crafting the best serach query
 
 It's important that the search that is generated is free of images that are unrelated (or have a high ratio of relevant images to irrelevant images), as the unrelated images will have to be manually removed as not to taint the dataset.
 
@@ -75,11 +75,11 @@ The model started with an average loss of 107 *(lower is better)*. After 24 hour
 
 After 48 hours, the model was able to detect some instances of number decals!
 
-###Results
+### Results
 
 
 
-##Considerations
+## Considerations
 
 After learning more about NASCAR than ever have before (I'm more of an F1 person myself :P), it is super sastifying to apply that knowledge to an ML model. That said, if taken further, there are some considerations for approachs and experimentation for imporiving the model.
 
@@ -110,7 +110,7 @@ In terminal, download images using the following command. *Make sure to append t
 
 The images will be downloaded into a new directory `downloads\nascar schemes (2017 OR 2018 OR 2019)`
 
-###Prepping files
+### Prepping files
 
 The images might contain special charcters that darkflow will not accept. Thus the files will most likely need to renamed. I used Bulk rename utility[https://www.bulkrenameutility.co.uk/Download.php] to trim everything but the number
 
@@ -122,7 +122,7 @@ In the utility, select all the files, and in dialog `Remove (5)`:
 
 Verify in the file explorer that the new name will only have the number and file extension. Then bulk rename with the `bulk` button in the corner.
 
-###Annotating Images
+### Annotating Images
 
 Navigate to `Image Scrape` and open `imagescrape.html`, open the images and begin annotating.
 
