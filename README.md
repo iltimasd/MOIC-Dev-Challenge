@@ -1,6 +1,27 @@
 # Detecting NASCAR with YOLO
 ![alt text](./docs/imgs/1.gif)
 
+### Table of Contents
+
+  * [The Objective](#the-objective)
+  * [Approach](#approach)
+    + [About Yolo](#about-yolo)
+    + [About NASCAR](#about-nascar)
+    + [Generating Dataset](#generating-dataset)
+      - [Crafting the best serach query](#crafting-the-best-serach-query)
+    + [Results](#results)
+  * [Considerations](#considerations)
+  * [Constructing, Training, and Testing the Model](#constructing--training--and-testing-the-model)
+    + [Gather images](#gather-images)
+    + [Prepping files](#prepping-files)
+    + [Annotating Images](#annotating-images)
+    + [Move data](#move-data)
+    + [Setup darkflow](#setup-darkflow)
+    + [Train the model](#train-the-model)
+      - [Assertion Error/Byte Expectation](#assertion-error-byte-expectation)
+    + [Test and Run the Model](#test-and-run-the-model)
+        * [Importing and Placing files](#importing-and-placing-files)
+
 ## The Objective
 
 ``` plain
@@ -209,13 +230,13 @@ If you get an error on the lines of:
 
 you can modify 'offset' in `loader.py` *(line 121)* to the differnce of byte count
 
-### Test/Run the Model
+### Test and Run the Model
 
 ***Double check that darkflow is properly setup with OpenCV and Tensorflow (refer to installation section here: https://github.com/thtrieu/darkflow)***
 
 After quitting training, there will be several files in the `darkflow\ckpt\` directory. Make note of the filename with highest number.
 
-##### Importing/Placing files
+##### Importing and Placing files
 Place provided set of `.data`,`.index`,`.profile`,and `.meta` files in `darkflow\ckpt\`. 
 Move `.cfg` file to `darkflow\cfg`. 
 Move `videoProcess.py` to `darkflow\`. 
