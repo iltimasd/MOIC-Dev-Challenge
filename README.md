@@ -1,4 +1,5 @@
 # Detecting NASCAR with YOLO
+![alt text](./docs/imgs/1.gif)
 
 ## The Objective
 
@@ -22,7 +23,9 @@ https://www.youtube.com/watch?v=B6j-FNfQTvM
 ```
 
 ## Approach
+
 ### About Yolo
+
 For this system that will detect NASCAR stock cars and their numbers, YOLO will be utilized, a real time object detection nueral net. YOLO, or You Only Look Once, applies its neural net to the whole image (once), unlike other models which apply the net to the image at different scale. This allows stronger predications as it can use the context of the whole image to asses predictions.
 
 `TLDR; YOLO is faster than other models because it scans the image once rather than multiple times`
@@ -76,8 +79,8 @@ The model started with an average loss of 107 *(lower is better)*. After 24 hour
 After 48 hours, the model was able to detect some instances of number decals!
 
 ### Results
-
-
+![alt text](./docs/imgs/1.gif)
+![alt text](./docs/imgs/2.gif)
 
 ## Considerations
 
@@ -90,7 +93,6 @@ One approach I would interested in would be to purchase and play a NASCAR video 
 Due to limitations around available hardware, the model was trained soley on number decals. Now that the model is confirmed, in the future it would be added to the COCO dataset (which already is confirmed to detectg cars), and the model would be retrained on a modified COCO dataset to then be able to detect number decals in addition to the range of objects in the COCO dataset
 
 ## Constructing, Training, and Testing the Model
----
 
 ### Gather images
 
@@ -116,9 +118,9 @@ The images might contain special charcters that darkflow will not accept. Thus t
 
 In the utility, select all the files, and in dialog `Remove (5)`:
 
--Dropdown from `crop` and choose `after`
--In the text entry next to `crop` type in the char `.`
--Finally check `Sym.`
+    -Dropdown from `crop` and choose `after`
+    -In the text entry next to `crop` type in the char `.`
+    -Finally check `Sym.`
 
 Verify in the file explorer that the new name will only have the number and file extension. Then bulk rename with the `bulk` button in the corner.
 
@@ -126,14 +128,16 @@ Verify in the file explorer that the new name will only have the number and file
 
 Navigate to `Image Scrape` and open `imagescrape.html`, open the images and begin annotating.
 
+Be sure that the `classes.txt` is updated with class names.
+
 after annontation export the images as a VOC; This will generate a file called `bboxes_voc.zip`
 
-###Move data
+### Move data
 
 Create a directory in `darkflow\` called `train`. In `darkflow\train\` create a folder `data` and `Annotations`.
 Copy the images into `data`, and unzip `bboxes_voc.zip` into `Annotations`.
 
-###Setup darkflow
+### Setup darkflow
 
 Make sure you have OpenCV installed, as well as TensorFlow 1.4!
 
@@ -141,7 +145,7 @@ Download the `tiny-yolo-voc` weights and cfg. The cfg can be found on the yolo w
 
 Place the cfg file into the `darkflow\cfg` directory and the weight file into the `darkflow\bin` directory
 
-###Train the model!
+### Train the model!
 **Skip this if you already possess custom weights**
 *\*the following edited is from darkflow repo*
 
@@ -203,15 +207,21 @@ If you get an error on the lines of:
 
 `AssertionError: expect 44948596 bytes, found 44948600`
 
-you can modify 'offset' in `loader.py` (line 121) to the differnce of byte count
+you can modify 'offset' in `loader.py` *(line 121)* to the differnce of byte count
 
-###Test/Run the Model
+### Test/Run the Model
 
-***Double check that darkflow is properly setup with OpenCV and Tensorflow***
+***Double check that darkflow is properly setup with OpenCV and Tensorflow (refer to installation section here: https://github.com/thtrieu/darkflow)***
 
-After quitting training, there will be several files in the `darkflow\ckpt\` directory. Make note of the filename with highest number. (or if provided a set `data`,`index`,`profile`,and `meta` file, place these in `darkflow\ckpt\`)
+After quitting training, there will be several files in the `darkflow\ckpt\` directory. Make note of the filename with highest number.
 
-Place the video to be processed in `darkflow\` named `cars.mp4`, or edit the following line in `videoProcess.py`  to reflect the video name
+##### Importing/Placing files
+Place provided set of `.data`,`.index`,`.profile`,and `.meta` files in `darkflow\ckpt\`. 
+Move `.cfg` file to `darkflow\cfg`. 
+Move `videoProcess.py` to `darkflow\`. 
+Move `labels.txt` to `darkflow\`. 
+
+Place the video to be processed in `darkflow\` and name it `cars.mp4`, or edit the following line in `videoProcess.py`  to reflect the video name
 
 ```python
 capture = cv2.VideoCapture('cars.mp4')
@@ -226,6 +236,7 @@ option = {
     'threshold': 0.3,
 }
 ```
+
 Save and run the script
 
 `python videoProcess.py`
