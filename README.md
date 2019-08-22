@@ -115,6 +115,8 @@ Due to limitations around available hardware, the model was trained solely on nu
 
 ## Constructing, Training, and Testing the Model
 
+***Training images, annotations, and pretrained models can be found here: https://drive.google.com/file/d/1sKub1T3owp3v2L5LvxOg5yirDmcAE-GB/view?usp=sharing***
+
 ### Gather images
 
 In the terminal, install `googleimagedownload` 
@@ -231,6 +233,8 @@ If you get an error on the lines of:
 you can modify 'offset' in `loader.py` *(line 121)* to the difference of byte count
 
 ### Test and Run the Model
+
+***Training images, annotations, and pretrained models can be found here: https://drive.google.com/file/d/1sKub1T3owp3v2L5LvxOg5yirDmcAE-GB/view?usp=sharing***
 
 ***Double check that darkflow is properly set up with OpenCV and Tensorflow (refer to installation section here: https://github.com/thtrieu/darkflow)***
 
