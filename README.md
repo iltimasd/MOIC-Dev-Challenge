@@ -241,10 +241,10 @@ you can modify 'offset' in `loader.py` *(line 121)* to the difference of byte co
 After quitting training, there will be several files in the `darkflow\ckpt\` directory. Make note of the filename with the highest number.
 
 ##### Importing and Placing files
-Place provided set of `.data`,`.index`,`.profile`,and `.meta` files in `darkflow\ckpt\`. 
-Move `.cfg` file to `darkflow\cfg`. 
-Move `videoProcess.py` to `darkflow\`. 
-Move `labels.txt` to `darkflow\`. 
+* Place provided set of `.data`,`.index`,`.profile`,and `.meta` files in `darkflow\ckpt\`. 
+* Place `.cfg` file to `darkflow\cfg`. 
+* Move `videoProcess.py` from the root of the repo to `darkflow\`. 
+* Move `labels.txt` from the root of the repo to to `darkflow\`. 
 
 Place the video to be processed in `darkflow\` and name it `cars.mp4`, or edit the following line in `videoProcess.py`  to reflect the video name
 
